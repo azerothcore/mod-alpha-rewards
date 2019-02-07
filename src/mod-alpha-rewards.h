@@ -17,7 +17,9 @@
 class AlphaRewards
 {
 public:
-
+    void OnLoginCheck(Player* player);
+    void OnLogoutUpdate(Player* player);
+    void AddGamePoint(Player* player, uint32 game_point);
 };
 
 class AlphaRewardData : public DataMap::Base
@@ -28,6 +30,6 @@ public:
     uint32 RewardPointsMap = 0;
 };
 
-#define sAlphaRewards ACE_Singleton<CrossFaction, ACE_Null_Mutex>::instance()
+#define sAlphaRewards ACE_Singleton<AlphaRewards, ACE_Null_Mutex>::instance()
 
 #endif
