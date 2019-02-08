@@ -28,9 +28,21 @@ public:
 class AlphaRewardData : public DataMap::Base
 {
 public:
-    AlphaRewardData() {}
-    AlphaRewardData(uint32 RewardPoints) : RewardPointsMap(RewardPoints) {}
+    AlphaRewardData() { reset(); }
+    AlphaRewardData(uint32 RewardPoints, uint32 timer) : RewardPointsMap(RewardPoints), timer(timer) {}
+    uint32 timer = 2*HOUR*IN_MILLISECONDS; // make this config Driven and rmoev below void Reset();
     uint32 RewardPointsMap = 0;
+
+    void reset()
+    {
+        /*
+        for when config is added
+
+        timer = static_cast<uint32>(sConfigMgr->GetIntDefault("RewardPlayTime", 2))*HOUR*IN_MILLISECONDS;
+
+        */
+        timer = static_cast <uint32>(2)* HOUR*IN_MILLISECONDS; 
+    }
 };
 
 #define sAlphaRewards ACE_Singleton<AlphaRewards, ACE_Null_Mutex>::instance()

@@ -58,6 +58,22 @@ public:
         sAlphaRewards->OnLogoutUpdate(p);
     }
 
+    // Reward for Active Game Time staying logged in
+    void OnBeforeUpdate(Player* player, uint32 p_time) override
+    {
+        if (player->isAFK())
+            return;
+
+        AlphaRewardData* RewardPoint = player->CustomData.GetDefault<AlphaRewardData>("RewardPoint");
+
+        if (RewardPoint->timer <= p_time)
+        {
+            RewardPoint->reset();
+            sAlphaRewards->AddGamePoint(player, 1);
+        }
+            
+    }
+
     void OnPlayerCompleteQuest(Player* player, Quest const* quest)
     {
         auto it = sAlphaRewards->AlphaQuestPointsMap.find(quest->GetQuestId());
