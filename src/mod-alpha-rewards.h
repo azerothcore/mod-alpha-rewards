@@ -13,6 +13,8 @@
 #include <vector>
 #include <algorithm>
 #include "BattlegroundMgr.h"
+#include <map>
+#include <unordered_map>
 
 class AlphaRewards
 {
@@ -20,6 +22,7 @@ public:
     void OnLoginCheck(Player* player);
     void OnLogoutUpdate(Player* player);
     void AddGamePoint(Player* player, uint32 game_point);
+    std::unordered_map<uint32, uint32> AlphaQuestPointsMap;
 };
 
 class AlphaRewardData : public DataMap::Base

@@ -6,7 +6,8 @@
 #include "DataMap.h"
 #include "mod-alpha-rewards.h"
 #include "ace/ACE.h"
-
+#include <map>
+#include <string>
 
 void AlphaRewards::OnLoginCheck(Player* player)
 {
