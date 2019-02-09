@@ -22,14 +22,17 @@ public:
     void OnLoginCheck(Player* player);
     void OnLogoutUpdate(Player* player);
     void AddGamePoint(Player* player, uint32 game_point);
+    void LoadAlphaRewardsTable();
     std::unordered_map<uint32, uint32> AlphaQuestPointsMap;
+    std::unordered_map<uint32, uint32> AlphaCreaturePointsMap;
+    std::unordered_map<uint32, uint32> AlphaAchievementPointsMap;
 };
 
 class AlphaRewardData : public DataMap::Base
 {
 public:
     AlphaRewardData() { reset(); }
-    AlphaRewardData(uint32 RewardPoints, uint32 timer) : RewardPointsMap(RewardPoints), timer(timer) {}
+    AlphaRewardData(uint32 RewardPoints) : RewardPointsMap(RewardPoints), timer(timer) {}
     uint32 timer = 2*HOUR*IN_MILLISECONDS; // make this config Driven and rmoev below void Reset();
     uint32 RewardPointsMap = 0;
 
