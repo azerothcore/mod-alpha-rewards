@@ -81,7 +81,7 @@ class AlphaRewardGlobalScript : public GlobalScript
 public:
     AlphaRewardGlobalScript() : GlobalScript("AlphaRewardGlobalScript") {}
 
-    void OnAfterUpdateEncounterState(Map* map, EncounterCreditType type, uint32 creditEntry, Unit* source, Difficulty difficulty_fixed, DungeonEncounterList const* encounters, uint32 dungeonCompleted, bool updated)
+    void OnAfterUpdateEncounterState(Map* map, EncounterCreditType /*type*/, uint32 /*creditEntry*/, Unit* source, Difficulty /*difficulty_fixed*/, DungeonEncounterList const* /*encounters*/, uint32 /*dungeonCompleted*/, bool updated)
     {
         if (!map->IsDungeon() || !map->IsHeroic() || map->IsBattlegroundOrArena())
             return;
