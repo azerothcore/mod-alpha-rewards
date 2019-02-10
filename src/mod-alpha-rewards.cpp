@@ -17,7 +17,8 @@ void AlphaRewards::OnLoginCheck(Player* player)
         return;
 
     Field* fields = result->Fetch();
-    player->CustomData.Set("RewardPointMap", new AlphaRewardData(fields[0].GetInt32()));
+    uint32& points = player->CustomData.GetDefault< AlphaRewardData>("Points")->RewardPointsMap;
+    points = fields[0].GetUInt32();
 }
 
 void AlphaRewards::OnLogoutUpdate(Player* player)
