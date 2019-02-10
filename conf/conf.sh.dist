@@ -28,6 +28,6 @@ DB_WORLD_UPDATE_PATHS+=(
 	$MOD_ALPHAREWARDS_ROOT"/data/sql/updates/world/"
 )
 
-DB_AUTH_CUSTOM_PATHS+=(
+DB_AUTH_UPDATE_PATHS+=(
 	$MOD_ALPHAREWARDS_ROOT"/data/sql/db-auth/"
 )
