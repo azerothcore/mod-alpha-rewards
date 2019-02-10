@@ -12,7 +12,7 @@ class LoadAlphaRewardGlobal : public WorldScript
 public:
     LoadAlphaRewardGlobal() : WorldScript("LoadAlphaRewardGlobal") { }
 
-    void OnLoadCustomDatabaseTable()
+    void OnLoadCustomDatabaseTable() override
     {
         sAlphaRewards->LoadAlphaRewardsTable();
     }
