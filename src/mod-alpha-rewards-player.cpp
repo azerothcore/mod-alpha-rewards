@@ -7,14 +7,19 @@
 #include "mod-alpha-rewards.h"
 #include "ace/ACE.h"
 
-class LoadQuestRewardTable : public WorldScript
+class LoadAlphaRewardGlobal : public WorldScript
 {
 public:
-    LoadQuestRewardTable() : WorldScript("LoadAlpha_Reward_SystemTable") { }
+    LoadAlphaRewardGlobal() : WorldScript("LoadAlphaRewardGlobal") { }
 
     void OnLoadCustomDatabaseTable()
     {
         sAlphaRewards->LoadAlphaRewardsTable();
+    }
+
+    void OnBeforeConfigLoad(bool /*reload*/) override
+    {
+        sAlphaRewards->SetInitialWorldSettings();
     }
 };
 
@@ -51,7 +56,7 @@ public:
             
     }
 
-    void OnPlayerCompleteQuest(Player* player, Quest const* quest)
+    void OnPlayerCompleteQuest(Player* player, Quest const* quest) override
     {
         auto it = sAlphaRewards->AlphaQuestPointsMap.find(quest->GetQuestId());
 
@@ -105,6 +110,6 @@ public:
 void AddAlphaRewardScripts()
 {
     new AlphaRewardPlayer();
-    new LoadQuestRewardTable();
+    new LoadAlphaRewardGlobal();
     new AlphaRewardGlobalScript();
 }

@@ -8,9 +8,19 @@
 #include "ace/ACE.h"
 #include <map>
 #include <string>
+#include "Configuration/Config.h"
+
+void AlphaRewards::SetInitialWorldSettings()
+{
+    enabled = sConfigMgr->GetBoolDefault("AlphaRewardsEnable", true);
+    RewardTimer = sConfigMgr->GetIntDefault("RewardPlayedTime", 2);
+}
 
 void AlphaRewards::OnLoginCheck(Player* player)
 {
+    if (!enabled)
+        return;
+
     QueryResult result = LoginDatabase.PQuery("SELECT `game_point` FROM `account` WHERE `id` = '%u' ", player->GetSession()->GetAccountId());
 
     if (!result)
@@ -23,6 +33,9 @@ void AlphaRewards::OnLoginCheck(Player* player)
 
 void AlphaRewards::OnLogoutUpdate(Player* player)
 {
+    if (!enabled)
+        return;
+
     if (AlphaRewardData* data = player->CustomData.Get<AlphaRewardData>("RewardPointsMap"))
     {
         uint32 reward = data->RewardPointsMap;
@@ -37,6 +50,9 @@ void AlphaRewards::AddGamePoint(Player* player, uint32 game_point)
 
 void AlphaRewards::LoadAlphaRewardsTable()
 {
+    if (!enabled)
+        return;
+
     sLog->outString("Loading Quest Reward System...");
 
     QueryResult result = WorldDatabase.PQuery("SELECT `Entry`, `TypeId`, `Points` FROM `alpha_reward_system`");
