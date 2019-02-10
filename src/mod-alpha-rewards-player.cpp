@@ -67,7 +67,7 @@ public:
         // ChatHandler(player->GetSession()).PSendSysMessage("You Currently have %u game points", player->CustomData.Get< AlphaRewardData>("RewardPointsMap")->RewardPointsMap);
     }
 
-    void OnAchiComplete(Player* player, AchievementEntry const* achievement)
+    void OnAchiComplete(Player* player, AchievementEntry const* achievement) override
     {
         auto it = sAlphaRewards->AlphaAchievementPointsMap.find(achievement->ID);
 

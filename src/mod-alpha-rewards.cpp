@@ -13,7 +13,6 @@
 void AlphaRewards::SetInitialWorldSettings()
 {
     enabled = sConfigMgr->GetBoolDefault("AlphaRewardsEnable", true);
-    RewardTimer = sConfigMgr->GetIntDefault("RewardPlayedTime", 2);
 }
 
 void AlphaRewards::OnLoginCheck(Player* player)
