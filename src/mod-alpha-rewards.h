@@ -31,8 +31,6 @@ public:
 class AlphaRewardData : public DataMap::Base
 {
 public:
-    AlphaRewardData() { reset(); }
-    AlphaRewardData(uint32 RewardPoints) : RewardPointsMap(RewardPoints), timer(timer) {}
     uint32 RewardPointsMap = 0;
     uint32 timer = 2*HOUR*IN_MILLISECONDS; // make this config Driven and rmoev below void Reset();
 

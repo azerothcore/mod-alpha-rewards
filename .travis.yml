@@ -44,9 +44,9 @@ before_install:
 
 install:
   - cd ..
-  - git clone --depth=1 --branch=master https://github.com/azerothcore/azerothcore-wotlk.git azerothcore
-  - mv mod-alpha-rewards azerothcore/modules
-  - cd azerothcore
+  - git clone --depth=1 --branch=master https://github.com/azerothcore/azerothcore-wotlk.git azerothcore-wotlk
+  - mv mod-alpha-rewards azerothcore-wotlk/modules
+  - cd azerothcore-wotlk
 
   # install OS deps (apt-get)
   - bash ./acore.sh "install-deps"
@@ -74,7 +74,7 @@ script:
   # compile
   - export CCACHE_CPP2=true
   - ccache -s
-  - timeout 2400 bash ./acore.sh "compiler" "all"
+  - timeout 2580 bash ./acore.sh "compiler" "all"
   - ccache -s
   - git clone --depth=1 --branch=master --single-branch https://github.com/ac-data/ac-data.git /home/travis/build/azerothcore/azerothcore-wotlk/env/dist/data
   - cp ./data/travis/worldserver.conf ./env/dist/etc/worldserver.conf
