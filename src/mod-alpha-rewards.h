@@ -13,6 +13,7 @@
 #include <vector>
 #include <algorithm>
 #include "BattlegroundMgr.h"
+#include "AccountMgr.h"
 #include <map>
 #include <unordered_map>
 #include "Configuration/Config.h"

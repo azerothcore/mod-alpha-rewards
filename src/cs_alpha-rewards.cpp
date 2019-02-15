@@ -79,7 +79,6 @@ public:
     {
         Player* player = handler->GetSession()->GetPlayer();
         Player* target = player->GetSelectedPlayer();
-        bool IsGM = player->GetSession()->GetSecurity() >= SEC_GAMEMASTER;
 
         //Check see if player is online
 
