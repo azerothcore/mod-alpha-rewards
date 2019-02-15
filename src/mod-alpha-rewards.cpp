@@ -26,8 +26,9 @@ void AlphaRewards::OnLoginCheck(Player* player)
         return;
 
     Field* fields = result->Fetch();
-    uint32& points = player->CustomData.GetDefault< AlphaRewardData>("Points")->RewardPointsMap;
-    points = fields[0].GetUInt32();
+
+   // player->CustomData.Set("RewardPointsMap", new AlphaRewardData(fields[0].GetUInt32()));
+    player->CustomData.Set("RewardPointsMap", new AlphaRewardData(fields[0].GetUInt32()));
 }
 
 void AlphaRewards::OnLogoutUpdate(Player* player)
@@ -52,13 +53,13 @@ void AlphaRewards::LoadAlphaRewardsTable()
     if (!enabled)
         return;
 
-    sLog->outString("Loading Quest Reward System...");
+    sLog->outString("Loading Alpha Reward System...");
 
     QueryResult result = WorldDatabase.PQuery("SELECT `Entry`, `TypeId`, `Points` FROM `alpha_reward_system`");
 
     if (!result)
     {
-        sLog->outErrorDb(">>  Loaded 0 AlphaQuestPoints. DB table `AlphaQuestPoints` is empty!");
+        sLog->outErrorDb(">>  Loaded 0 Alpha Rewards. DB table `alpha_reward_system` is empty!");
         sLog->outString();
         return;
     }
@@ -87,6 +88,6 @@ void AlphaRewards::LoadAlphaRewardsTable()
 
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u AlphaQuestPoints in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> Loaded %u Alpha Rewards in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString("");
 }

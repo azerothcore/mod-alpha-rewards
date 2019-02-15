@@ -107,7 +107,7 @@ public:
     }
 };
 
-void AddAlphaRewardScripts()
+void AddSC_AlphaRewardScript()
 {
     new AlphaRewardPlayer();
     new LoadAlphaRewardGlobal();

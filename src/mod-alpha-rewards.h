@@ -34,6 +34,8 @@ public:
 class AlphaRewardData : public DataMap::Base
 {
 public:
+    AlphaRewardData() {}
+    AlphaRewardData(uint32 RewardPointsMap) : RewardPointsMap(RewardPointsMap) { reset(); }
     uint32 RewardPointsMap = 0;
     uint32 timer = sConfigMgr->GetIntDefault("RewardPlayedTime", 2)*HOUR*IN_MILLISECONDS; // make this config Driven and rmoev below void Reset();
 
